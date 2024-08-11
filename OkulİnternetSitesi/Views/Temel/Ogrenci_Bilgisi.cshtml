@@ -1,0 +1,119 @@
+﻿@model OkulİnternetSitesi.Models.Ogrenci
+
+<style>
+    /* Your existing styles here */
+</style>
+
+<h2>Öğrenci Bilgisi</h2>
+
+<img src="~/Uploads/@Model.Resim" style="width:10%;height:10%" />
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">@Html.DisplayNameFor(model => model.OgrenciAdıSoyadı):</h1>
+            <h1 style="display:inline-flex">@Html.DisplayFor(model => model.OgrenciAdıSoyadı)</h1>
+        </dt>
+
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">@Html.DisplayNameFor(model => model.TC):</h1>
+            <h1 style="display:inline-flex">@Html.DisplayFor(model => model.TC)</h1>
+        </dt>
+
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">@Html.DisplayNameFor(model => model.OgrenciDogumYeri):</h1>
+            <h1 style="display:inline-flex">@Html.DisplayFor(model => model.OgrenciDogumYeri)</h1>
+        </dt>
+
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">@Html.DisplayNameFor(model => model.OgrenciDogumTarihi):</h1>
+            <h1 style="display:inline-flex">@Html.DisplayFor(model => model.OgrenciDogumTarihi)</h1>
+        </dt>
+
+        <!-- Display the total fee -->
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">Toplam Ücret:</h1>
+            <h1 style="display:inline-flex" id="totalFee">@Model.ToplamUcret</h1>
+        </dt>
+
+        <!-- Display the paid fee -->
+        <dt>
+            <h1 style="display:inline-flex;color:darkred">Ödenen Ücret:</h1>
+            <h1 style="display:inline-flex" id="paidFee">@Model.OdenenUcret</h1>
+        </dt>
+    </dl>
+</div>
+
+<!-- Add a payment input field -->
+<div>
+    <label for="paymentAmount">Ödeme Miktarı:</label>
+    <input type="number" id="paymentAmount" min="0" step="any" />
+    <button id="paymentButton">Ödeme Yap</button>
+</div>
+
+<!-- Display the remaining fee after payment -->
+<div>
+    <dt>
+        <h1 style="display:inline-flex;color:darkred">Kalan Ücret:</h1>
+        <h1 style="display:inline-flex" id="remainingFee">@Model.ToplamUcret - @Model.OdenenUcret</h1>
+    </dt>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // JavaScript/jQuery to handle payment and update paid fee and remaining fee
+    $(document).ready(function () {
+        var totalFee = parseFloat("@Model.ToplamUcret");
+        var odenenTutar = parseFloat("@Model.OdenenUcret");
+
+        function updateFeeDisplay() {
+            $("#paidFee").text(odenenTutar.toFixed(2));
+            $("#remainingFee").text((totalFee - odenenTutar).toFixed(2));
+            $("#totalFee").text(totalFee.toFixed(2));
+        }
+
+        // Update the fee display on page load
+        updateFeeDisplay();
+
+        $("#paymentButton").click(function () {
+            var paymentAmount = parseFloat($("#paymentAmount").val());
+            if (isNaN(paymentAmount) || paymentAmount <= 0) {
+                alert("Lütfen geçerli bir ödeme miktarı girin.");
+                return;
+            }
+
+            if (paymentAmount > totalFee - odenenTutar) {
+                alert("Ödeme miktarı, kalan ücretten fazla olamaz.");
+                return;
+            }
+
+            odenenTutar += paymentAmount;
+            updateFeeDisplay();
+
+            // Send the payment details to the server using AJAX
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("MakePayment", "OgrenciDersleris")",
+                data: { id: @Model.OgrenciId, paymentAmount: paymentAmount },
+                dataType: "json",
+                success: function (result) {
+                    if (result.success) {
+                        alert(result.message);
+                        // Handle successful payment (if needed)
+                    } else {
+                        alert(result.message);
+                        // Handle error (if needed)
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Ödeme yapılırken bir hata oluştu. Lütfen tekrar deneyin.");
+                    // Handle error (if needed)
+                }
+            });
+        });
+    });
+</script>
+
+<h2 style="color:darkblue">
+    @Html.ActionLink("Listeye Dön", "Ogrenci_Listesi")
+</h2>

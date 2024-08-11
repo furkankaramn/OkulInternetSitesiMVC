@@ -1,0 +1,34 @@
+﻿@model OkulİnternetSitesi.Models.OgrenciDersleri
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>OgrenciDersleri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ders.DersAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ders.DersAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ogrenci.OgrenciAdıSoyadı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ogrenci.OgrenciAdıSoyadı)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

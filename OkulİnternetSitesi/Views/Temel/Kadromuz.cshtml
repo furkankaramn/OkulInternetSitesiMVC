@@ -1,0 +1,73 @@
+﻿@model IEnumerable<OkulİnternetSitesi.Models.Ogretmen>
+
+<style>
+    body {
+        background-color: #f8fdcf;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 1%;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+    h2 {
+        color: blue;
+    }
+</style>
+
+<center>
+    <h2>Öğretmen Listesi</h2>
+</center>
+
+
+<center>
+    <table class="table">
+        <tr>
+            <th>Resim</th>
+            <th>İsim Soyisim</th>
+            <th>Alanları</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <center><img src="~/Uploads/@item.Resim" /></center>
+                </td>
+                <td>
+                    <h1>
+                        <center>@Html.DisplayFor(model => item.IsimSoyisim)</center>
+                    </h1><br />
+                </td>
+                <td style="font-size: 15px">
+                    <center>@Html.DisplayFor(model => item.Alanları)</center>
+                </td>
+            </tr>
+        }
+    </table>
+</center>
+
+
+
+
+
+

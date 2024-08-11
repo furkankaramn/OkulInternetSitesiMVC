@@ -1,0 +1,41 @@
+﻿@model OkulİnternetSitesi.Models.SınıfListesiExcel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sil</h2>
+
+<h3>Bunu Silmek İstediğinize Emin misiniz?</h3>
+<div>
+    <h4>SınıfListesiExcel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SınıfAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SınıfAdı)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExcelDosyası)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExcelDosyası)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

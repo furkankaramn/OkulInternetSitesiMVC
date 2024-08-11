@@ -1,0 +1,80 @@
+﻿@model OkulİnternetSitesi.Models.Ogretmen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sil</h2>
+
+<h3>Bunu Silmek İstediğinize emin misiniz</h3>
+<div>
+    <h4>Ogretmen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsimSoyisim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsimSoyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alanları)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alanları)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿@model OkulİnternetSitesi.Models.Ogretmen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Ogretmen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsimSoyisim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsimSoyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alanları)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alanları)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

@@ -1,0 +1,49 @@
+﻿@{
+    bool isAuthenticated = HttpContext.Current.User.Identity.IsAuthenticated;
+    bool isAdmin = User.IsInRole("Admin");
+    string username = isAuthenticated ? HttpContext.Current.User.Identity.Name : "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Okul</title>
+    <link rel="icon" href="~/assets/logoicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="~/Content/StyleSheet1.css">
+</head>
+<body>
+    <div id="banner">
+        <div id="navbar">
+            <a href="/Temel/AnaSayfa">
+                <img src="~/Content/logo2.png" id="logo" style="width:90%" />
+            </a>
+            <ul>
+                @if (isAuthenticated)
+                {
+                    <li><a href="/Ogrencis/Create">Ogrenci</a></li>
+                    <li><a href="/Ders/Create">Ders</a></li>
+                    <li><a href="/SınıfListesiExcel/Create">Sınıf Listesi</a></li>
+                    <li><a href="/DersProgramıExcel/Create">Ders Programı</a></li>
+                    <li><a href="/OgrenciDersleris/Index">Ders Atama</a></li>
+                    <li><a href="/Ogretmen/Create">Ogretmen</a></li>
+                    <li><a href="/Iletisims/Index">İletişim</a></li>
+                    <li><a href="/Security/Logout">Çıkış Yap</a></li>
+                }
+                else
+                {
+                    <li><a href="/Temel/Ogrenci_Listesi">Ogrenci Listesi</a></li>
+                    <li><a href="/Temel/Hakkında">Hakkımızda</a></li>
+                    <li><a href="/Temel/Sınıf_Listesi_Excel">Sınıf Listesi</a></li>
+                    <li><a href="/Temel/Ders_Programı_Excel">Ders Programı</a></li>
+                    <li><a href="/Temel/Kadromuz">Kadromuz</a></li>
+                    <li><a href="/Iletisims/Create">İletişim</a></li>
+                    <li><a href="/Security/Login">Giriş Yap</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    @RenderBody()
+
+</body>
+</html>

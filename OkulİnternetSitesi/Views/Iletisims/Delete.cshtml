@@ -1,0 +1,122 @@
+﻿@model OkulİnternetSitesi.Models.Iletisim
+
+
+
+<style>
+
+
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    dl {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    dt {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    dd {
+        margin-bottom: 10px;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .form-actions input[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .form-actions input[type="submit"]:hover {
+                background-color: #c82333;
+            }
+
+        .form-actions a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+</style>
+
+<h2>Sil</h2>
+
+<h3>Bunu Silmek İstediğinize Emin Misiniz?</h3>
+
+<div>
+    <h4>Iletişim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Isim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyisim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesaj)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mesaj)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" />
+            |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "back-link" })
+        </div>
+    }
+</div>

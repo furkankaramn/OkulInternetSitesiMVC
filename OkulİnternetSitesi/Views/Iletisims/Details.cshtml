@@ -1,0 +1,97 @@
+﻿@model OkulİnternetSitesi.Models.Iletisim
+
+
+
+<style>
+
+
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    dl {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    dt {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    dd {
+        margin-bottom: 10px;
+    }
+
+    .details-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .details-links a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+</style>
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Iletişim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Isim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyisim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soyisim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesaj)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mesaj)
+        </dd>
+    </dl>
+</div>
+
+<div class="details-links">
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID })
+    |
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>
